@@ -1,17 +1,24 @@
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import 'assets/css/app.css';
+import Homepages from 'Pages/Homepages';
+import Detailspage from 'Pages/DetailsPage';
+import Cart from 'Pages/Cart';
+import Success from 'Pages/Succes';
+import NotFound from 'Pages/NotFound';
+
 
 function App() {
   return (
     <div className="App">
-      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-  <div class="flex-shrink-0">
-    {/* <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo"> */}
-  </div>
-  <div>
-    <div class="text-xl font-medium text-black">ChitChat</div>
-    <p class="text-gray-500">You have a new message!</p>
-  </div>
-</div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Homepages} />
+          <Route path="/categories/:idc" component={Detailspage} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/success" component={Success} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </Router>
     </div>
   );
 }
