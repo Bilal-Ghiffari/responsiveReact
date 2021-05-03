@@ -1,0 +1,1 @@
+export const RootPath = "https://6190b7a0-3d53-450b-a625-944630c3a119.mock.pstmn.io";
