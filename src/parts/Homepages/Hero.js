@@ -4,21 +4,21 @@ export default function Hero() {
     return (
     <section className="flex items-center hero">
         <div
-            className="w-full absolute z-20 inset-0 md:relative md:w-1/2 text-center flex flex-col justify-center hero-caption"
-        >
-            <h1 className="text-3xl md:text-5xl leading-tight font-semibold">
-            The Room <br className="" />You've Dreaming
+            className="w-full absolute z-20 inset-0 md:relative md:w-1/2 text-center flex flex-col justify-center hero-caption">
+                {/* The Room <br className="" />You've Dreaming */}
+            <h1 className="text-3xl md:text-5xl leading-tight font-semibold uppercase md:text-black text-white">
+                Our latest offers
             </h1>
-            <h2 className="px-8 text-base md:px-0 md:text-lg my-6 tracking-wide">
-            Kami menyediakan furniture berkelas yang
-            <br className="hidden lg:block" />membuat ruangan terasa homey
+            <h2 className="px-8 text-base md:px-0 md:text-lg my-6 tracking-wide md:text-black text-white">
+            Kami menyediakan sparepart & accessories berkelas yang
+            <br className="hidden lg:block" /> membuat kendaraan anda keren
             </h2>
             <div>
             <a
                 href="#browse-the-room"
-                className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 rounded-full px-8 py-3 mt-4 inline-block flex-none transition duration-200"
-                >Explore Now</a
-            >
+                className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 rounded-full px-8 py-3 mt-4 inline-block flex-none transition duration-300"
+                > Explore Now
+            </a>
             </div>
         </div>
         <div className="w-full inset-0 md:relative md:w-1/2">
@@ -43,7 +43,7 @@ export default function Hero() {
                 ></button>
             </div>
             <img
-                src="images/content/image-section-1.png"
+                src="images/content/image-section-hero 1.png"
                 alt="hero 1"
                 className="absolute inset-0 md:relative w-full h-full object-cover object-center"
             />

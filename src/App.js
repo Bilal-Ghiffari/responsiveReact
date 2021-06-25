@@ -5,21 +5,22 @@ import Detailspage from 'Pages/DetailsPage';
 import Cart from 'Pages/Cart';
 import Success from 'Pages/Succes';
 import NotFound from 'Pages/NotFound';
-
+import Provider from 'helpers/Hooks/useGlobalContext';
 
 function App() {
   return (
-    <div className="App">
+    <Provider>
       <Router>
         <Switch>
           <Route exact path="/" component={Homepages} />
-          <Route path="/categories/:idc" component={Detailspage} />
+          <Route exact path="/categories/:idc" component={Detailspage} />
+          <Route path="/categories/:idc/products/:idp" component={Detailspage} />
           <Route path="/cart" component={Cart} />
           <Route path="/success" component={Success} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
-    </div>
+    </Provider>
   );
 }
 

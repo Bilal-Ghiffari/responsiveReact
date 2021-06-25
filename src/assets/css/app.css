@@ -142,3 +142,10 @@ button[disabled] {
 section:not(.bg-gray-100) + section.sitemap > div {
   @apply border-t;
 }
+
+.tag {
+  @apply text-sm bg-red-600 py-1 px-5 absolute;
+  z-index: 3;
+  min-height: 30px;
+  border-radius: 0 0.75rem;
+}
