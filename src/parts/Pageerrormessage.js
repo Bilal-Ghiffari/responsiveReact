@@ -17,7 +17,7 @@ export default function NOtFound({
                 </p>
                 <Link
                 to="/"
-                className="text-gray-900 bg-red-200 focus:outline-none w-full py-3 rounded-full text-lg focus:text-black transition-all duration-200 px-8 cursor-pointer"
+                className="text-white bg-yellow-800 w-full py-3 rounded-full text-lg transition-all duration-200 px-8 cursor-pointer"
                 >
                 Back to Shop
                 </Link>

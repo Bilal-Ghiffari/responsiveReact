@@ -1,29 +1,31 @@
-import Clients from 'parts/Clients';
-import Footer from 'parts/Footer';
+// My React.Component
+import React from 'react';
+import Documents from 'parts/Document';
+
+// My Componets HomePages
 import Header from 'parts/Header';
 import Hero from 'parts/Homepages/Hero';
+import BenefitService from 'parts/Homepages/BenefitService';
+// import Clients from 'parts/Clients';
 import BrowseRoom from 'parts/Homepages/BrowseRoom';
-import Service from 'parts/Homepages/Service';
 import Justarrived from 'parts/Homepages/Justarrived';
-import React from 'react';
-import useScrollAnchor from 'helpers/Hooks/useScrollAnchor';
-import useModalDom from 'helpers/Hooks/useModalDom';
 import Asidemenu from 'parts/Asidemenu';
-import ItemDetaisHome from 'Mockup_Api/Items-home.json';
+import Footer from 'parts/Footer';
+
+
 
 export default function Homepages() {
-    useScrollAnchor();
-    useModalDom();
+
     return (
-        <>
+        <Documents>
             <Header theme="white" position="absolute" />
             <Hero />
-            <Clients />
-            <BrowseRoom {...ItemDetaisHome.categories }/>
-            <Justarrived {...ItemDetaisHome.product} />
-            <Service />
+            {/* <Clients /> */}
+            <BenefitService />
+            <BrowseRoom />
+            <Justarrived />
             <Asidemenu />
-            <Footer />
-        </>
+            <Footer /> 
+        </Documents> 
     )
 }

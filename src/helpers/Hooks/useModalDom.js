@@ -24,15 +24,14 @@ export default function useModalDom() {
 
         const ModalTriggers = document.getElementsByClassName("modal-trigger");
         const modalWrapperClassName = "fixed inset-0 bg-black opacity-35";
-        for (let index = 0; index < ModalTriggers.length; index++) {
-            const e = ModalTriggers[index];
+        
+        for (const e of ModalTriggers) {
             e.addEventListener("click", openModal);
         }
-        
+
         return () => {
-            for (let index = 0; index < ModalTriggers.length; index++) {
-            const e = ModalTriggers[index];
-            e.removeEventListener("click", openModal);
+            for (const e of ModalTriggers) {
+                e.removeEventListener("click", openModal);
             }
         };
     });

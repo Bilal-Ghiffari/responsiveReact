@@ -1,14 +1,16 @@
 import React from 'react';
-import Footer from 'parts/Footer';
 import Header from 'parts/Header';
 import Breadcrumb from 'componets/Breadcrumb';
 import Shoppingdetails from 'parts/Cart/Shoppingdetails';
 import Shippingdetails from 'parts/Cart/Shippingdetails';
 import Asidemenu from 'parts/Asidemenu';
+import Footer from 'parts/Footer';
+import Documents from 'parts/Document';
 
 export default function Homepages() {
+
     return (
-        <>
+        <Documents>
             <Header position="details" />
             <Breadcrumb list={[
                 {url: "/", name: "Home"},
@@ -24,6 +26,6 @@ export default function Homepages() {
             </section>
             <Asidemenu />
             <Footer />
-        </>
+        </Documents>
     )
 }

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+@import "remixicon/fonts/remixicon.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,7 +44,7 @@
 }
 
 .overlay .video {
-  @apply absolute transform bg-blue-200 bg-no-repeat bg-center w-20 h-20 rounded-full items-center justify-center flex -translate-x-1/2 -translate-y-1/2;
+  @apply absolute transform bg-yellow-700 bg-no-repeat bg-center w-20 h-20 rounded-full items-center justify-center flex -translate-x-1/2 -translate-y-1/2;
   background-image: url("../images/icon-play.svg#icon-play");
   top: 50%;
   left: 50%;
@@ -148,4 +149,29 @@ section:not(.bg-gray-100) + section.sitemap > div {
   z-index: 3;
   min-height: 30px;
   border-radius: 0 0.75rem;
+}
+
+/* Cart */
+
+.amount span {
+  @apply px-5 font-semibold text-lg;
+  color: crimson;
+}
+
+.amount .count {
+  @apply outline-none cursor-pointer rounded py-3 bg-gray-300;
+  width: 40px;
+  height: 40px;
+}
+
+.mySwiper .swiper-button-prev {
+  @apply pr-4 top-24;
+}
+
+.mySwiper .swiper-button-next {
+  @apply pr-4 top-24;
+}
+
+.timer span {
+  @apply inline-block h-10 w-10 bg-black text-white text-center mr-3 leading-10 rounded-lg;
 }

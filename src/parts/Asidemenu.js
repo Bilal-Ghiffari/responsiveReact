@@ -48,7 +48,6 @@ export default function Asidemenu() {
         <div className="border-b border-gray-200 py-12 mt-16 px-4">
             <div className="flex justify-center mb-8">
             <img
-                className=" w-40 h-28"
                 src="/images/content/logo.png"
                 alt="Luxspace | Fulfill your house with beautiful furniture"
             />

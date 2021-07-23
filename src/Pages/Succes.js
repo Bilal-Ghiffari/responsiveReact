@@ -3,10 +3,13 @@ import Footer from 'parts/Footer';
 import Header from 'parts/Header';
 import Breadcrumb from 'componets/Breadcrumb';
 import { Link } from 'react-router-dom';
+import Documents from 'parts/Document';
 
 export default function Succes() {
+    
     return (
-        <><Header position="details" />
+        <Documents>
+            <Header position="details" />
             <Breadcrumb list={[
                 {url: "/", name: "Home"},
                 {url: "/Success", name: "Success Checkout"},
@@ -35,6 +38,6 @@ export default function Succes() {
         </div>
     </section>
     <Footer />
-    </>
+    </Documents>
     )
 }

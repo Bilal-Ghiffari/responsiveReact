@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { Link } from 'react-router-dom';
+// import {IoIosFlash} from 'react-icons/all'
 
 import fetch from 'helpers/Fetch';
 import useAsnyc from 'helpers/Hooks/useAsnyc';
@@ -7,13 +8,52 @@ import Loading from 'helpers/Loading/skeleton';
 
 
 export default function BrowseRoom() {
-    const {data, run, isLoading} = useAsnyc();
+    const [timerDays, setTimerDays] = useState("00");
+    const [timerHours, setTimerHours] = useState("00");
+    const [timerMinutes, setTimerMinutes] = useState("00");
+    const [timerSecond, setTimerSecond] = useState("00");
 
+
+    let interval = useRef();
+
+    // flash sale
+    const startTimer = () => {
+        const countDownDate = new Date('Jul 25, 2021 00:00:00').getTime();
+
+        interval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
+            const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                // stop our Time
+                clearInterval(interval.current)
+            }else {
+                // update timer
+                setTimerDays(days);
+                setTimerHours(hours);
+                setTimerMinutes(minutes);
+                setTimerSecond(seconds);
+            }
+        }, 1000)
+    } 
+
+    // componentDidMount
     useEffect(() => {
-        run(fetch({url: "/api/categories/?page=1&limit=4"}))
-    },[run]);
+        startTimer();
+        return () => {
+            clearInterval(interval.current)
+        }
+    })
 
-    console.log(data);
+    const {data, run, isLoading} = useAsnyc();
+    useEffect(() => {
+        run(fetch({url:"/api/categories/?page=1&limit=4"}))
+    },[run]);
 
     const ratioClassName = {
         wrapper: {
@@ -35,48 +75,48 @@ export default function BrowseRoom() {
     };
 
     return (
-    <section className="flex bg-gray-100 py-16 px-4" id="browse-the-room">
+    <section className="flex bg-yellow-600 py-16 px-4" id="browse-the-room">
         <div className="container mx-auto">
-            <div className="flex flex-start mb-4">
-            <h3 className="text-2xl capitalize font-semibold">
-                browse accessories <br className="" />that we designed for you
-            </h3>
+            <div className="flex justify-center mb-4">
+                <h3 className="text-2xl capitalize font-semibold animate-ping text-red-700 pl-5">
+                    F<i class="ri-flashlight-fill"></i>ash Sale
+                </h3>
             </div>
+                <div className="py-7 timer">
+                    <h2 className="text-lg mb-5 font-medium">3 Day Flash Sale All Course</h2>
+                    <span>{timerDays}</span> 
+                    : <span>{timerHours}</span>
+                    : <span>{timerMinutes}</span>
+                    : <span>{timerSecond}</span>
+                </div>
 
             <div className="grid grid-rows-2 grid-cols-9 gap-4">
             {
             isLoading ? <Loading ratio={ratioClassName} /> : data.data.map((item, index) => {
-
-            return <div key={item.id}
-                className={`relative card ${ratioClassName?.wrapper.default?.[item.ratio.default]} 
-                    ${ratioClassName?.wrapper.md?.[item.ratio.md]}
-                `}
-                style={{height: index === 0 ? 180 : "auto"}}>
-                <div className="card-shadow rounded-xl">
-                <img
-                    src={`/images/content/${item.imageUrl}`}
-                    alt={item.title}
-                    className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl"
-                />
-                </div>
-                <div className={`overlay ${ratioClassName?.meta?.[item.ratio.md]}`}>
-
-                {
-                    item.id === 1 || item.id === 4 ? (
-                    <div className="tag text-white top-0 right-0">
-                    {item.promo}
+                return <div key={item.id}
+                    className={`relative card ${ratioClassName?.wrapper.default?.[item.ratio.default]} 
+                        ${ratioClassName?.wrapper.md?.[item.ratio.md]}
+                    `}
+                    style={{height: index === 0 ? 180 : "auto"}}>
+                    <div className="card-shadow rounded-xl">
+                    <img
+                        src={`/images/content/${item.imageUrl}`}
+                        alt={item.title}
+                        className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl"
+                    />
                     </div>
-                    ) : ""
-                }
-            
-                {/* <span className="">
-                    {item.products} item{item.products > 1 ? "s" : ""}
-                </span> */}
-                <Link>
-                    <h3 className="text-2xl font-semibold text-white">{item.title}</h3>
-                </Link>
+                    <div className={`overlay ${ratioClassName?.meta?.[item.ratio.md]}`}>
+                    <div className="tag text-white top-0 right-0">
+                        {item.promo} %
+                    </div>
+                    <Link>
+                        <h3 className="text-2xl font-semibold text-white">{item.title}</h3>
+                    </Link>
+                    <span className="text-gray-300">
+                        {item.products} Item{item.products > 1 ? "s" : ""}
+                    </span>
+                    </div>
                 </div>
-            </div>
             })
             }
             </div>
